@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------------------------------------------------------------------------------------------
 
 import pricing
-import whisper
+import whisper_hide
 
 import json
 import requests
@@ -29,7 +29,7 @@ def on_message(ws, message):
         results = pricing.getItemResults(message['new'])
         for result in results:
             print("found", result['item']['name'], "@", result['listing']['price']['amount'], result['listing']['price']['currency'])
-            whisper.sendWhisper(result['listing']['whisper_token'])
+            whisper_hide.sendWhisper(result['listing']['whisper_token'])
             
 def on_error(ws, error):
     print(error)
