@@ -1,24 +1,7 @@
 # wss://www.pathofexile.com/api/trade/live/Affliction/D2blMW5T5
 
-# HEADERS---------------------------------------------------------------------------
 
-# GET wss://www.pathofexile.com/api/trade/live/Affliction/D2blMW5T5 HTTP/1.1
-# Host: www.pathofexile.com
-# Connection: Upgrade
-# Pragma: no-cache
-# Cache-Control: no-cache
-# User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
-# Upgrade: websocket
-# Origin: https://www.pathofexile.com
-# Sec-WebSocket-Version: 13
-# Accept-Encoding: gzip, deflate, br, zstd
-# Accept-Language: en-US,en;q=0.9
-# Cookie: _ga=GA1.1.1911120562.1710427136; POESESSID=22ac0e4ca3ff4ceaa54324c42e7d388b; _ga_R6TM1WQ9DW=GS1.1.1710427136.1.1.1710428387.0.0.0
-# Sec-WebSocket-Key: wxSFP2o5Q4RIx6iLQso8Kw==
-# Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
-
-
-# NeED ORIGIN HEADER
+# Need ORIGIN HEADER
 # 401 = bad POESESSIONID
 # 404 = bad header somewhere
 # ------------------------------------------------------------------------------------------------------------------------------------------------------
