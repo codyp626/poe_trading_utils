@@ -3,3 +3,5 @@ my_secrets.py
 /.venv
 bfg-1.14.0.jar
 whisper_hide.py
+testing.py
+cards.csv

@@ -1,21 +1,7 @@
 import requests
 import json
-import my_secrets
+import init_stuff
 DEBUG = False
-# DEBUG = True
-sess_id = my_secrets.getSessID()
-# sess_id = "asdfsadf"
-
-
-header_dict = {
-  'Content-Type': 'application/json',
-  'Cookie': ('POESESSID=%s') % (sess_id),
-  'Origin': 'https://www.pathofexile.com',
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
-}
-
-def getHeaders():
-    return header_dict
 
 def getDivPrice():
     return 155.0
@@ -36,13 +22,19 @@ def getItemHashes(search_name, search_basetype):
      
 
 
-    response = requests.request("POST", url, headers=getHeaders(), data=payload)
+    response = requests.request("POST", url, headers=init_stuff.getHeaders(), data=payload)
+    # if response != "<Response [200]>":
+    #     print(response.text)
+    #     return None
     resp_obj = response.json()
-    if 'error' in resp_obj:
+    if 'error' in response.text:
         print(resp_obj)
         return None
-    
-    result_strings = resp_obj['result']
+    if resp_obj['result']:
+        result_strings = resp_obj['result']
+    else:
+        print("error: no items found")
+        return False
 
     if DEBUG:
         print("Searching for...[", search_name + " " + search_basetype, "]")
@@ -57,11 +49,14 @@ def getItemHashes(search_name, search_basetype):
 # getting results from result hashes
 def getItemResults(hashes):
     url = "https://www.pathofexile.com/api/trade/fetch/"
+    if hashes is None:
+        print("Error: got no hashes")
+        return False
     for i in range(10 if (len(hashes)>10) else len(hashes)):
         url += hashes[i] + ','
     url = url[:-1] #remove trailing comma
     payload = {}
-    response = requests.request("GET", url, headers=header_dict, data=payload)
+    response = requests.request("GET", url, headers=init_stuff.getHeaders(), data=payload)
     resp_obj = response.json()
     item_results = resp_obj['result']
     
@@ -70,10 +65,14 @@ def getItemResults(hashes):
         print (response.text)
     return item_results
 
-def returnResults(results):
+def returnPriceAvg(results):
+    max_count = 2
+    count = 0
     sum = 0
     sum_divisor = 0
     for result in results:
+        if count > max_count:
+            break
         curr_string = result['listing']['price']['currency']
         amount = result['listing']['price']['amount']
         if curr_string == "divine":
@@ -84,26 +83,27 @@ def returnResults(results):
             sum_divisor += 1
         if DEBUG:
             print("price:", amount, curr_string)
+        count += 1
             
-    return (sum*1.0)/sum_divisor
+    return "%0.1f" % ((sum*1.0)/sum_divisor)
 
 def PriceItem(search_name, search_basetype):
     #name is for unique names ex: search_name = "Mageblood", search_basetype = "Heavy Belt"
     #currency is a base type
     
     hashes = getItemHashes(search_name, search_basetype)
-    if hashes == None:
+    if hashes == False:
         print("hash FAIL")
         return
     results = getItemResults(hashes)
-    if results == None:
+    if len(results) < 1:
         print("result FAIL")
         return
-    return returnResults(results)
+    return returnPriceAvg(results)
     # printResults(results)
     
 if __name__ == "__main__":
-    # print("Mirror =", PriceItem("","Mirror of Kalandra"))
+    print("Mirror =", PriceItem("","Mirror of Kalandra"))
     # print("Mirror house =", PriceItem("","House of Mirrors"))
     # print("Mageblood =", PriceItem("Mageblood","Heavy Belt"))
-    print("Headhunter =", PriceItem("Headhunter","Leather Belt"))
+    # print("Headhunter =", PriceItem("Headhunter","Leather Belt"))
