@@ -47,10 +47,14 @@ def toCSV(cards):
     
     for card in cards:
         #inits
-        implicits = 0
+        implicits = None
         corrupt_bool = False
-        curr_count = 1
-        quality = 0
+        curr_count = None
+        quality = None
+        influenced = None
+        synth = None
+        links = None
+        itemLevel = None
         
         
         # print("writing", card['baseType'])
@@ -64,15 +68,14 @@ def toCSV(cards):
         # clean up result string
         result_str = result_str.replace("\n", '')
         result_str = result_str.replace("<divination>", '')
-        result_str = re.sub(r'\{Item Level:} <.+>{\d{1,}}', '', result_str)
+        # result_str = re.sub(r'\{Item Level:} <.+>{\d{1,}}', '', result_str)
         result_str = result_str.replace("<default>", '')
         result_str = result_str.replace("<enchanted>", '')
         result_str = result_str.replace("<augmented>", '')
-        result_str = result_str.replace("<gemitem>", '')
         result_str = re.sub(r'\{Quality:\} \{\+\d{1,}%\}', '', result_str)
         result_str = re.sub(r'\{Area Level:} <normal>\{\d{1,}}', '', result_str)
         result_str = re.sub(r'\{Map Tier:} <normal>\{\d{1,}}', '', result_str)
-        result_str = re.sub(r'<size:.+>', '', result_str)
+        # result_str = re.sub(r'<size:.+>', '', result_str)
         
         
         if "<uniqueitem>" in result_str:
@@ -94,6 +97,14 @@ def toCSV(cards):
                 result_str = re.sub(r'\d{1,}x ', '', result_str)
             rarity = "currency"
             
+        if "<gemitem>" in result_str:
+                rarity = "gem"
+                result_str = result_str.replace("<gemitem>", '')
+            
+        if "{Item Level:}" in result_str:
+            match = re.search(r'\{Item Level:} <normal>{\d{1,}\}', result_str)
+            itemLevel = int(match.group()[23:-1])
+            result_str = re.sub(r'\{Item Level:} <normal>{\d{1,}}', '', result_str) # clean up item level
             
         # add corrupted tag to card result
         if "<corrupted>" in result_str or "{corrupted}" in result_str or "{Corrupted}" in result_str:
@@ -110,20 +121,42 @@ def toCSV(cards):
             implicits = 3
             result_str = result_str.replace("{Three-Implicit}", '')
             
+        if "{Influenced Item}" in result_str:
+            result_str = result_str.replace("{Influenced Item}", '')
+            influenced = 1
+        
+        if "{Double-Influenced Item}" in result_str:
+            result_str = result_str.replace("{Double-Influenced Item}", '')
+            influenced = 2
+            
+        if "{Synthesised}" in result_str:
+            result_str = result_str.replace("{Synthesised}", '')
+            synth = True
         # TODO QUALITY
+        
+        if "{Item}" in result_str:
+            continue
 
+        result_str = re.sub(r'<size:.+>', '', result_str)
+        result_str = result_str.replace("{", '')
+        result_str = result_str.replace("}", '')
         card_dict = {
             'name': card['baseType'],
-            'resultTag': result_str,
             'stackSize': stackSize,
-            # 'otherTags': otherTags,
+            'resultTag': result_str,
+            'resultBaseType': None,
             'corrupted': corrupt_bool,
             'rarity': rarity,
             'quality': quality,
             'implicits': implicits,
-            'count': curr_count
+            'resultCurrencyCount': curr_count,
+            'influenced': influenced,
+            'synthesised': synth,
+            'links': links,
+            'itemLevel': itemLevel
         }
-        card_dict_array.append(card_dict)
+        if rarity == "unique":
+            card_dict_array.append(card_dict)
         
     keys = card_dict_array[0].keys()
     with open('cards.csv', 'w', newline='') as output_file:
@@ -137,12 +170,13 @@ def priceCards():
         data = [row for row in csv_reader]
         for card in data:
             if card['rarity'] == "unique":
-                card_price = pricing.PriceItem('', card['name'])
-                result_price = pricing.PriceItem(card['resultTag'][1:-1])
-            
-                time.sleep(10)
+                # card_price = pricing.PriceItem('', card['name'])
+                print("pricing:", card['resultTag'][1:-1], card['resultBaseType'])
+                # result_price = pricing.PriceItem(card['resultTag'][1:-1], '')
+                # print(result_price)
+                # time.sleep(5)
 if __name__ == "__main__":
     # print(getLeagueName())
-#    toCSV(ninjaDivObject())
-    priceCards()
+   toCSV(ninjaDivObject())
+    # priceCards()
     
