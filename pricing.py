@@ -1,6 +1,7 @@
 import requests
 import json
 import init_stuff
+import time
 DEBUG = False
 
 
@@ -60,7 +61,7 @@ def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlv
         
     # set corrupted or not
     payload = json.dumps(payload)
-    print(payload)
+    # print(payload)
     response = requests.request("POST", url, headers=init_stuff.getHeaders(), data=payload)
     resp_obj = response.json()
     if 'error' in response.text:
@@ -131,6 +132,7 @@ def returnPriceAvg(results):
     return "%0.1f" % ((sum*1.0)/sum_divisor)
 
 
+#returns lowest x prices of all items
 def PriceItem(search_name = None, search_basetype = None, implicits = None, itemlvl = None, quality = None, corrupted = None):
     # name is for unique names ex: search_name = "Mageblood", search_basetype = "Heavy Belt"
     # currency is a base type
@@ -143,12 +145,30 @@ def PriceItem(search_name = None, search_basetype = None, implicits = None, item
     if not results:
         print("result FAIL")
         return
-    return returnPriceAvg(results)
+    # return returnPriceAvg(results)
+    return results
     # printResults(results)
+    
+def priceAndNameFromResults(results):
+    priceAmount = []
+    currencyName = []
+    name = []
+    rowList = []
+    for result in results:
+        currencyName.append(result['listing']['price']['currency'])
+        priceAmount.append(result['listing']['price']['amount'])
+        name.append(result['item']['baseType'])
+    for x in range(len(name)):
+        rowList.append([name[x], priceAmount[x], currencyName[x], time.time()])
+        
+    # print/(rowList)
+    return rowList
 
 
 if __name__ == "__main__":
-    print("Mirror =", PriceItem(search_basetype="Mirror of Kalandra"))
+    # with open('mirror_data.csv', 'r') as file:
+        # print("Mirror =", PriceItem(search_basetype="Mirror of Kalandra"))
+    priceAndNameFromResults(PriceItem(search_basetype="Mirror of Kalandra"))
     # print("Mirror house =", PriceItem("","House of Mirrors"))
     # print("AVG PRICE =", PriceItem(search_basetype="The Apothecary"))
     # print("Headhunter =", PriceItem("Headhunter","Leather Belt"))
