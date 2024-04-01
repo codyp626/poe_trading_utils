@@ -16,18 +16,56 @@ ILVL = 11
 PRIMORDIAL = 12
 
 
-with open('cards_unique.csv', 'r') as file:
-    reader = csv.reader(file)
-    with open('card_price.csv', mode='w') as outfile:
-        for card in reader:
-            result_price = pricing.PriceItem(search_name=card[RESULT], corrupted=CORRUPTED, itemlvl=ILVL)
-            print(card[RESULT], "\t\t=\t\t", result_price)
-            time.sleep(10)
-            card_price = pricing.PriceItem(search_basetype=card[NAME])
-            print(card[NAME], "\t\t=\t\t", card_price)
-            time.sleep(10)
-            writer = csv.writer(outfile)
-            row = [card[NAME], card[STACK_SIZE], card_price, card[RESULT], result_price]
-            writer.writerow(row)
+def getAvgPrice(results, sum):
+    price = 0
+    count = 0
+    if results == None:
+        return -1
+    for result in results:
+        if count < sum:
+            if result[3] == "divine":
+                price += result[2] * pricing.getDivPrice()
+            elif result[3] == "chaos":
+                price += result[2]
+            else:
+                print("error: got bad currency type", result[3])
+                return -1
+        count += 1
             
-        
+    return price / (sum*1.0)
+
+
+def writeToDatabase():
+    with open('cards_unique.csv', 'r') as file:
+        reader = csv.reader(file)
+        with open('card_price.csv', mode='w') as outfile:
+            writer = csv.writer(outfile)
+            writer.writerow(["name", "stackSize", "cardPrice", "result", "resultPrice", "profit"])
+            for card in reader:
+                if card[NAME] == "name":
+                    continue
+                
+                stackSize = int(card[STACK_SIZE])
+                results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name=card[RESULT], corrupted=card[CORRUPTED]))
+                result_price = getAvgPrice(results, 2)
+                time.sleep(20)
+                
+                cards = pricing.priceAndNameFromResults(pricing.PriceItem(search_basetype=card[NAME]))
+                card_price = getAvgPrice(cards, stackSize/2)
+                time.sleep(20)
+                
+                print(card[NAME], "=", card_price, '\t', card[RESULT], "=", result_price)
+                profit = result_price-(card_price*stackSize)
+                print("profit:", profit)
+                
+                row = [card[NAME], stackSize, card_price, card[RESULT], result_price, profit]
+                writer.writerow(row)
+                
+if __name__ == "__main__":
+    # pretty_results = pricing.priceAndNameFromResults(pricing.PriceItem(search_basetype="The Apothecary"))
+    # pretty_results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Machina Mitts", corrupted=False))
+    # print(pretty_results)
+    # print(getAvgPrice(pretty_results, 4))
+    # writeToDatabase()
+    results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Inspired Learning", corrupted=True))
+    print(getAvgPrice(results, 2))

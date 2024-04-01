@@ -1,8 +1,167 @@
-name,stackSize,,resultTag,
-The Price of Devotion,7,12412.0,Mageblood,28130.0
-The Apothecary,5,10034.0,Mageblood,28130.0
-The Demon,10,2204.0,Headhunter,8700.0
-Choking Guilt,6,2784.0,Stranglegasp,4524.0
-The Insane Cat,9,16530.0,Mageblood,28130.0
-Luminous Trove,7,395.0,Voices,6.2
-The Doctor,8,962.2,Headhunter,8700.0
+name,stackSize,cardPrice,result,resultPrice,excel profit,profit / trade,capital needed (div)
+The Demon,10,1360.8,Headhunter,22950,9342,934.2,100.8
+The Fiend,11,1313.2,Headhunter,19575,5130,466.4,107.0
+Anarchy's Price,13,14.8,Voltaxic Rift,1282,1090,83.8,1.4
+Deadly Joy,6,46.7,Torrent's Reclamation,607.5,327.5,54.6,2.1
+The Astromancer,7,7.1,The Eternity Shroud,405,355,50.7,0.4
+The Strategist,6,91.7,Inspired Learning,803.25,253.25,42.2,4.1
+The One That Got Away,7,3.7,Replica Bated Breath,270,244,34.9,0.2
+The Last One Standing,10,60.4,Atziri's Disfavour,870.75,266.75,26.7,4.5
+Fire Of Unknown Origin,7,1481.1,Nimis,10523.25,155.25,22.2,76.8
+The Wedding Gift,2,48.0,Arakaali's Fang,130,34,17.0,0.7
+The Professor,4,2.0,The Putrid Cloister,75,67,16.8,0.1
+Assassin's Gift,9,30.0,Divinarius,405,135,15.0,2.0
+Remembrance,8,3.8,Precursor's Emblem,150,120,15.0,0.2
+Beauty Through Death,5,61.6,Atziri's Reflection,371.25,63.25,12.7,2.3
+Burning Blood,6,6.3,Xoph's Blood,104.5,66.5,11.1,0.3
+The Nurse,8,216.0,The Doctor,1812.4,84.375,10.5,12.8
+The Avenger,12,6.2,Mjölner,200,126,10.5,0.5
+Succor of the Sinless,6,96.7,Bottled Faith,641.25,61.25,10.2,4.3
+The Progeny of Lunaris,2,189.0,Dying Sun,398.25,20.25,10.1,2.8
+The Greatest Intentions,10,56.8,The Saviour,668.25,100.25,10.0,4.2
+The Soul,9,33.1,Soul Taker,378,80,8.9,2.2
+Lethean Temptation,6,130.7,Nebulis,837,53,8.8,5.8
+Misery in Darkness,6,71.0,Shroud of the Lightless,472.5,46.5,7.8,3.2
+Poisoned Faith,8,6.5,Arakaali's Fang,109,57,7.1,0.4
+Silence and Frost,7,15.4,The Pandemonius,155.25,47.25,6.8,0.8
+Eternal Bonds,4,4.5,Replica Cortex,45,27,6.8,0.1
+The Twilight Moon,6,1.7,The Twilight Temple,49,39,6.5,0.1
+The Craving,4,2.5,Unending Hunger,25.5,15.5,3.9,0.1
+The Vast,7,5.7,Song of the Sirens,64,24,3.4,0.3
+Brotherhood in Exile,5,2.0,One With Nothing,27,17,3.4,0.1
+Hunter's Reward,3,7.3,The Taming,31.5,9.5,3.2,0.2
+Pride of the First Ones,7,54.9,Farrul's Fur,405,21,3.0,2.8
+The Escape,5,6.0,Seven-League Step,45,15,3.0,0.2
+A Fate Worse Than Death,4,9.5,Cortex,50,12,3.0,0.3
+A Modest Request,3,1.3,Megalomaniac,10,6,2.0,0.0
+The Life Thief,6,1.3,Zerphi's Heart,20,12,2.0,0.1
+The Spark and the Flame,2,10.0,Berek's Respite,24,4,2.0,0.1
+The Dragon,4,1.0,Coruscating Elixir,10,6,1.5,0.0
+Desperate Crusade,3,26.7,Prism Guardian,84,4,1.3,0.6
+Reckless Ambition,6,1.3,Omeyocan,14.5,6.5,1.1,0.1
+The Mind's Eyes,7,2.0,Astral Projector,20,6,0.9,0.1
+Justified Ambition,5,1.2,Synthesis Map,10,4,0.8,0.0
+The Prince of Darkness,6,1.0,Elegant Hubris,10,4,0.7,0.0
+A Note in the Wind,4,1.0,Asenath's Mark,5,1,0.3,0.0
+A Dab of Ink,9,2.0,The Poet's Pen,20,2,0.2,0.1
+Endless Night,7,1.1,Maloney's Mechanism,9.5,1.5,0.2,0.1
+The Landing,5,1.2,The Beachhead,7,1,0.2,0.0
+The Darkest Dream,6,1.7,Severed in Sleep,10,3.90799E-14,0.0,0.1
+The Offspring,9,4.4,Ryslatha's Coil,40,0,0.0,0.3
+The Wolf's Legacy,4,1.0,Vaults of Atziri,4,0,0.0,0.0
+Vanity,9,2.2,Tabula Rasa,20,0,0.0,0.1
+The Pact,9,2.2,Pledge of Hands,19,-1,-0.1,0.1
+The Thaumaturgist,8,1.0,Shavronne's Revelation,7,-1,-0.1,0.1
+Scholar of the Seas,7,1.1,Mao Kun,7,-1,-0.1,0.1
+The Dreamland,8,1.0,Poorjoy's Asylum,5,-3,-0.4,0.1
+From Bone to Ashes,8,1.0,Ngamahu's Flame,4,-4,-0.5,0.1
+The Throne,2,1.0,Kaom's Roots,1,-1,-0.5,0.0
+Light and Truth,2,1.0,Crystal Sceptre,1,-1,-0.5,0.0
+Treasure Hunter,7,1.1,Vaults of Atziri,4,-4,-0.6,0.1
+The Beast,6,1.0,Belly of the Beast,2.5,-3.5,-0.6,0.0
+The Lich,12,1.0,Midnight Bargain,5,-7,-0.6,0.1
+Broken Truce,5,1.2,Cold Iron Point,3,-3,-0.6,0.0
+The King's Heart,8,1.0,Kaom's Heart,3,-5,-0.6,0.1
+The Coming Storm,8,1.0,Lightning Coil,3,-5,-0.6,0.1
+The Pack Leader,6,1.0,Alpha's Howl,2,-4,-0.7,0.0
+The Offering,8,1.0,Shavronne's Wrappings,2.5,-5.5,-0.7,0.1
+The Wolven King's Bite,8,1.0,Rigwald's Quills,2.5,-5.5,-0.7,0.1
+Cursed Words,13,1.1,Maw of Mischief,5,-9,-0.7,0.1
+The Obscured,7,1.4,* Breachstone,5,-5,-0.7,0.1
+The Formless Sea,7,1.1,Varunastra,3,-5,-0.7,0.1
+The Damned,6,5.7,Soul Ripper,29.5,-4.5,-0.7,0.3
+Unchained,4,1.0,Facebreaker,1,-3,-0.8,0.0
+The Brittle Emperor,8,1.0,Voll's Devotion,2,-6,-0.8,0.1
+Forbidden Power,4,1.0,Balefire,1,-3,-0.8,0.0
+The Whiteout,8,1.0,Cospri's Malice,2,-6,-0.8,0.1
+The Incantation,4,1.0,The Whispering Ice,1,-3,-0.8,0.0
+The Deceiver,4,1.0,Belt of the Deceiver,1,-3,-0.8,0.0
+The Master,4,1.0,Bisco's Collar,1,-3,-0.8,0.0
+Death,4,1.0,Mon'tregul's Grasp,1,-3,-0.8,0.0
+The One With All,6,1.0,Le Heup of All,1.5,-4.5,-0.8,0.0
+Vile Power,5,1.2,Doomfletch,2,-4,-0.8,0.0
+The Gladiator,5,1.2,Nightmare Bascinet,2,-4,-0.8,0.0
+The Oath,6,1.0,Death's Oath,1,-5,-0.8,0.0
+A Mother's Parting Gift,6,1.0,Fertile Mind,1,-5,-0.8,0.0
+Alivia's Grace,6,1.0,Queen of the Forest,1,-5,-0.8,0.0
+The Visionary,6,1.0,Lioneye's Vision,1,-5,-0.8,0.0
+The Blazing Fire,6,1.0,Chin Sol,1,-5,-0.8,0.0
+The Army of Blood,6,1.0,Bloodbond,1,-5,-0.8,0.0
+The Adventuring Spirit,6,1.0,Victario's Influence,1,-5,-0.8,0.0
+The Fathomless Depths,8,1.0,Lightpoacher,1,-7,-0.9,0.1
+Rats,8,1.0,Rat's Nest,1,-7,-0.9,0.1
+The Drunken Aristocrat,8,1.0,Divination Distillate,1,-7,-0.9,0.1
+The Scavenger,8,1.0,Carcass Jack,1,-7,-0.9,0.1
+The Witch,8,1.0,Kiara's Determination,1,-7,-0.9,0.1
+Humility,9,2.2,Tabula Rasa,12,-8,-0.9,0.1
+The Deep Ones,5,1.2,Tidebreaker,1.5,-4.5,-0.9,0.0
+The Watcher,12,1.0,Crown of Eyes,1,-11,-0.9,0.1
+Echoes of Love,3,1.3,Fidelitas' Spike,1,-3,-1.0,0.0
+The Enthusiasts,3,1.3,Victario's Influence,1,-3,-1.0,0.0
+Turn the Other Cheek,3,1.3,Pacifism,1,-3,-1.0,0.0
+The Return of the Rat,3,1.3,Tavukai,1,-3,-1.0,0.0
+The Insatiable,3,1.3,The Harvest,1,-3,-1.0,0.0
+The Risk,3,1.3,Ventor's Gamble,1,-3,-1.0,0.0
+The Wolf's Shadow,3,1.3,Hyaon's Fury,1,-3,-1.0,0.0
+The Fox in the Brambles,7,1.1,Bramblejack,1,-7,-1.0,0.1
+The Siren,7,1.1,The Whispering Ice,1,-7,-1.0,0.1
+The Wind,7,1.1,Windripper,1,-7,-1.0,0.1
+The Forsaken,7,1.1,Umbilicus Immortalis,1,-7,-1.0,0.1
+The Sun,7,1.1,Rise of the Phoenix,1,-7,-1.0,0.1
+The Ruthless Ceinture,7,1.1,Meginord's Girdle,1,-7,-1.0,0.1
+The Sword King's Salute,7,1.1,Daresso's Salute,1,-7,-1.0,0.1
+The Conduit,9,1.1,Doryani's Fist,1,-9,-1.0,0.1
+The Poet,9,1.1,Blood of Corruption,1,-9,-1.0,0.1
+The Betrayal,9,1.1,Maligaro's Virtuosity,1,-9,-1.0,0.1
+The Harvester,11,1.1,The Harvest,1,-11,-1.0,0.1
+The Hermit,9,1.1,Lifesprig,1,-9,-1.0,0.1
+The Scarred Meadow,9,1.1,Wake of Destruction,1,-9,-1.0,0.1
+Might is Right,9,1.1,Trypanon,1,-9,-1.0,0.1
+Audacity,5,1.2,Doryani's Fist,1,-5,-1.0,0.0
+The Feast,5,1.2,Romira's Banquet,1,-5,-1.0,0.0
+The Fletcher,5,1.2,Drillneck,1,-5,-1.0,0.0
+The Demoness,5,1.2,Death's Hand,1,-5,-1.0,0.0
+The Lunaris Priestess,5,1.2,Sire of Shards,1,-5,-1.0,0.0
+Thunderous Skies,5,1.2,Storm Cloud,1,-5,-1.0,0.0
+Dark Temptation,5,1.2,Obliteration,1,-5,-1.0,0.0
+Thirst for Knowledge,5,1.2,Gluttony,1,-5,-1.0,0.0
+Rebirth,27,1.0,Charan's Sword,-1,-29,-1.1,0.2
+The Cursed King,8,1.0,Rigwald's Curse,-1,-9,-1.1,0.1
+The Queen,16,2.0,Atziri's Acuity,14,-18,-1.1,0.2
+Atziri's Arsenal,4,1.0,Weapon,-1,-5,-1.3,0.0
+The Messenger,4,1.0,Harbinger Piece,-1,-5,-1.3,0.0
+Pride Before the Fall,8,1.8,Kaom's Heart,3.5,-10.5,-1.3,0.1
+The Last Supper,6,3.3,Bino's Kitchen Knife,11.5,-8.5,-1.4,0.1
+Judging Voices,9,2.0,Forbidden Shako,5,-13,-1.4,0.1
+The Academic,8,47.5,Inspired Learning,367.5,-12.5,-1.6,2.8
+Mawr Blaidd,16,2.0,Eyes of the Greatwolf,5,-27,-1.7,0.2
+The Hive of Knowledge,6,2.3,Machina Mitts,2.5,-11.5,-1.9,0.1
+Etched in Blood,9,2.2,Rigwald's Quills,2,-18,-2.0,0.1
+A Stone Perfected,5,2.4,Jewel,0,-12,-2.4,0.1
+The Hunger,9,10.2,Taste of Hate,70,-22,-2.4,0.7
+The Primordial,5,3.2,Jewel,0,-16,-3.2,0.1
+Gift of Asenath,5,5.6,Asenath's Gentle Touch,11,-17,-3.4,0.2
+Winter's Embrace,2,4.0,Circle of Fear,1,-7,-3.5,0.1
+Peaceful Moments,5,4.4,Timeless Jewel,0,-22,-4.4,0.2
+The Mad King,7,6.0,Ultimatum Aspect,10,-32,-4.6,0.3
+Love Through Ice,4,310.5,Unnatural Instinct,1215,-27,-6.8,9.2
+The Garish Power,4,7.0,Jewel,-1,-29,-7.3,0.2
+The Polymath,3,26.7,Astramentis,58,-22,-7.3,0.6
+Azyran's Reward,9,7.6,Prismatic Jewel,0,-68,-7.6,0.5
+The Eternal War,4,8.5,Timeless Jewel,0,-34,-8.5,0.3
+The Eye of the Dragon,10,10.0,Jewel,0,-100,-10.0,0.7
+The Destination,9,18.9,Watcher's Eye,50,-120,-13.3,1.3
+Choking Guilt,6,256.5,Stranglegasp,1451.25,-87.75,-14.6,11.4
+The Gulf,5,96.0,Thread of Hope,405,-75,-15.0,3.6
+Luminous Trove,7,41.4,Voices,70,-220,-31.4,2.1
+Tranquillity,7,196.7,Voltaxic Rift,1147.5,-229.5,-32.8,10.2
+The World Eater,8,111.3,Starforge,607.5,-282.5,-35.3,6.6
+The Doctor,8,1812.4,Headhunter,14175,-324,-40.5,107.4
+The Chosen,5,115.8,Skin of the Lords,270,-309,-61.8,4.3
+The Shieldbearer,8,367.9,The Squire,2423.25,-519.75,-65.0,21.8
+The Samurai's Eye,3,113.3,Watcher's Eye,45,-295,-98.3,2.5
+The Price of Loyalty,4,185.0,Skin of the Loyal,303.75,-436.25,-109.1,5.5
+The Endless Darkness,9,408.0,Voidforge,2092.5,-1579.5,-175.5,27.2
+The Insane Cat,9,2325.0,Mageblood,6750,-14175,-1575.0,155.0
+The Apothecary,5,5988.6,Mageblood,19575,-10368,-2073.6,221.8
+The Price of Devotion,7,3510.0,Mageblood,6750,-17820,-2545.7,182.0

@@ -3,16 +3,17 @@ import json
 import init_stuff
 import time
 DEBUG = False
+# DEBUG = True
 
 
 def getDivPrice():
-    return 290
+    return 135
 
 # gets item hashes from poe api (corrupted items not yet suported)
 
 
-def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlvl=None, quality=None, corrupted=None):
-    url = "https://www.pathofexile.com/api/trade/search/Standard"
+def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlvl=None, quality=None, corrupted=False):
+    url = "https://www.pathofexile.com/api/trade/search/Necropolis"
 
     payload = {
         "query":
@@ -28,7 +29,7 @@ def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlv
                 "filters":
                 {
                     # "quality": {"min": quality},
-                    # "corrupted": {"option": None},
+                    # "corrupted": {},
                     # "ilvl": {"min": itemlvl}
                 }
             },
@@ -52,12 +53,16 @@ def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlv
 
     if search_name is not None:
         payload["query"]["name"] = search_name
+    else:
+        corrupted = None
+        
     if search_basetype is not None:
         payload["query"]["type"] = search_basetype
     if implicits is not None:
         payload["query"]["stats"] = [{"type":"and","filters":[{"id":"pseudo.pseudo_number_of_implicit_mods","value":{"min":implicits},"disabled":False}]}]
     if corrupted is not None:
-        payload["query"]["filters"]["misc_filters"]["filters"]["corrupted"]["option"] = corrupted
+        payload["query"]["filters"]["misc_filters"]["filters"] = {"corrupted": {"option": corrupted},}
+        # payload["query"]["filters"]["misc_filters"]["filters"]["corrupted"]["option"] = corrupted
         
     # set corrupted or not
     payload = json.dumps(payload)
@@ -136,6 +141,9 @@ def returnPriceAvg(results):
 def PriceItem(search_name = None, search_basetype = None, implicits = None, itemlvl = None, quality = None, corrupted = None):
     # name is for unique names ex: search_name = "Mageblood", search_basetype = "Heavy Belt"
     # currency is a base type
+    if search_name == None and search_basetype == None:
+        print("ERROR: name and base can't be None")
+        return None
 
     hashes = getItemHashes(search_name, search_basetype, implicits, itemlvl, quality, corrupted)
     if not hashes:
@@ -150,16 +158,21 @@ def PriceItem(search_name = None, search_basetype = None, implicits = None, item
     # printResults(results)
     
 def priceAndNameFromResults(results):
+    if results == None:
+        print("error: got no results")
+        return
     priceAmount = []
     currencyName = []
     name = []
+    baseType = []
     rowList = []
     for result in results:
         currencyName.append(result['listing']['price']['currency'])
         priceAmount.append(result['listing']['price']['amount'])
-        name.append(result['item']['baseType'])
-    for x in range(len(name)):
-        rowList.append([name[x], priceAmount[x], currencyName[x], time.time()])
+        name.append(result['item']['name'])
+        baseType.append(result['item']['baseType'])
+    for x in range(len(results)):
+        rowList.append([name[x], baseType[x], priceAmount[x], currencyName[x]])
         
     # print/(rowList)
     return rowList
@@ -168,7 +181,7 @@ def priceAndNameFromResults(results):
 if __name__ == "__main__":
     # with open('mirror_data.csv', 'r') as file:
         # print("Mirror =", PriceItem(search_basetype="Mirror of Kalandra"))
-    priceAndNameFromResults(PriceItem(search_basetype="Mirror of Kalandra"))
+    print(priceAndNameFromResults(PriceItem(search_name="Starforge", corrupted=False)))
     # print("Mirror house =", PriceItem("","House of Mirrors"))
     # print("AVG PRICE =", PriceItem(search_basetype="The Apothecary"))
     # print("Headhunter =", PriceItem("Headhunter","Leather Belt"))
