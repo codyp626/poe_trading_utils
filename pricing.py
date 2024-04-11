@@ -7,7 +7,7 @@ DEBUG = False
 
 
 def getDivPrice():
-    return 135
+    return 141
 
 # gets item hashes from poe api (corrupted items not yet suported)
 
@@ -17,7 +17,8 @@ def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlv
 
     payload = {
         "query":
-        {"status": {"option": "online"},
+        # {"status": {"option": "online"},
+        {"status": {"option": "any"},
          # "name":search_name,
          # "type":search_basetype,
          "stats": [],
@@ -38,15 +39,22 @@ def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlv
                 "disabled": False,
                     "filters":
                         {
-                            "price":
+                            # "price":
+                            #     {
+                            #         # "option":"chaos_divine"
+                            #         "option":"any"
+                            #     },
+                            "sale_type":
                                 {
-                                    "option":"chaos_divine"
+                                    # "option":"chaos_divine"
+                                    "option":"any"
                                 }
                         }
             }
         }
         },
-        "sort": {"price": "asc"}
+        # "sort": {"price": "asc"}
+        "sort": {"stack_size": "desc"}
     }
 
     # payload = json.dumps({"query": {"status": {"option": "online"}, "name": "Mageblood","type": "Heavy Belt", "stats": [{"type": "and", "filters": []}]}, "sort": {"price": "asc"}})
@@ -167,10 +175,25 @@ def priceAndNameFromResults(results):
     baseType = []
     rowList = []
     for result in results:
-        currencyName.append(result['listing']['price']['currency'])
-        priceAmount.append(result['listing']['price']['amount'])
+        try:
+            currencyName.append(result['listing']['price']['currency'])
+        except:
+            currencyName.append("null")
+            # print("price error")
+        try:
+            priceAmount.append(result['listing']['price']['amount'])
+        except:
+            priceAmount.append(-1)
+            # print("price error")
+        
         name.append(result['item']['name'])
         baseType.append(result['item']['baseType'])
+        try:
+            lastCharName = result['listing']['account']['lastCharacterName']
+        except:
+            lastCharName = "null"
+        print("got stack size:", result['item']['stackSize'], "Acc name:", result['listing']['account']['name'], '//', lastCharName)
+        
     for x in range(len(results)):
         rowList.append([name[x], baseType[x], priceAmount[x], currencyName[x]])
         
@@ -179,11 +202,5 @@ def priceAndNameFromResults(results):
 
 
 if __name__ == "__main__":
-    # with open('mirror_data.csv', 'r') as file:
-        # print("Mirror =", PriceItem(search_basetype="Mirror of Kalandra"))
-    print(priceAndNameFromResults(PriceItem(search_name="Starforge", corrupted=False)))
-    # print("Mirror house =", PriceItem("","House of Mirrors"))
-    # print("AVG PRICE =", PriceItem(search_basetype="The Apothecary"))
-    # print("Headhunter =", PriceItem("Headhunter","Leather Belt"))
-    # print(PriceItem(search_name="Voices", corrupted=True))
-    # print(PriceItem(search_name="Mageblood", corrupted=True, implicits=2))
+    # print(priceAndNameFromResults(PriceItem(search_name="Starforge", corrupted=False)))
+    print(priceAndNameFromResults(PriceItem(search_basetype="The Patient")))

@@ -62,10 +62,10 @@ def writeToDatabase():
                 writer.writerow(row)
                 
 if __name__ == "__main__":
-    # pretty_results = pricing.priceAndNameFromResults(pricing.PriceItem(search_basetype="The Apothecary"))
+    # pretty_results = pricing.priceAndNameFromResults(pricing.PriceItem(search_basetype="Divine Orb"))
     # pretty_results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Machina Mitts", corrupted=False))
     # print(pretty_results)
     # print(getAvgPrice(pretty_results, 4))
     # writeToDatabase()
-    results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Inspired Learning", corrupted=True))
+    results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Yoke of Suffering"))
     print(getAvgPrice(results, 2))
