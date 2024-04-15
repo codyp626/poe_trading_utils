@@ -192,8 +192,10 @@ def priceAndNameFromResults(results):
             lastCharName = result['listing']['account']['lastCharacterName']
         except:
             lastCharName = "null"
-        print("got stack size:", result['item']['stackSize'], "Acc name:", result['listing']['account']['name'], '//', lastCharName)
-        
+        try:
+            print("got stack size:", result['item']['stackSize'], "Acc name:", result['listing']['account']['name'], '//', lastCharName)
+        except:
+            print("no stack size")
     for x in range(len(results)):
         rowList.append([name[x], baseType[x], priceAmount[x], currencyName[x]])
         
