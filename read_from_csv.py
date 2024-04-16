@@ -46,10 +46,12 @@ def writeToDatabase():
                     continue
                 
                 stackSize = int(card[STACK_SIZE])
+                print("Trying to find:", card[RESULT])
                 results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name=card[RESULT], corrupted=card[CORRUPTED]))
                 result_price = getAvgPrice(results, 2)
                 time.sleep(20)
                 
+                print("Trying to find:", card[NAME])
                 cards = pricing.priceAndNameFromResults(pricing.PriceItem(search_basetype=card[NAME]))
                 card_price = getAvgPrice(cards, stackSize/2)
                 time.sleep(20)
@@ -66,6 +68,6 @@ if __name__ == "__main__":
     # pretty_results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Machina Mitts", corrupted=False))
     # print(pretty_results)
     # print(getAvgPrice(pretty_results, 4))
-    # writeToDatabase()
-    results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Yoke of Suffering"))
-    print(getAvgPrice(results, 2))
+    writeToDatabase()
+    # results = pricing.priceAndNameFromResults(pricing.PriceItem(search_name="Yoke of Suffering"))
+    # print(getAvgPrice(results, 2))

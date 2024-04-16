@@ -39,22 +39,21 @@ def getItemHashes(search_name=None, search_basetype=None, implicits=None, itemlv
                 "disabled": False,
                     "filters":
                         {
-                            # "price":
+                            "price":
+                                {
+                                    "option":"chaos_divine"
+                                },
+                            # "sale_type":
                             #     {
                             #         # "option":"chaos_divine"
                             #         "option":"any"
-                            #     },
-                            "sale_type":
-                                {
-                                    # "option":"chaos_divine"
-                                    "option":"any"
-                                }
+                            #     }
                         }
             }
         }
         },
-        # "sort": {"price": "asc"}
-        "sort": {"stack_size": "desc"}
+        "sort": {"price": "asc"}
+        # "sort": {"stack_size": "desc"}
     }
 
     # payload = json.dumps({"query": {"status": {"option": "online"}, "name": "Mageblood","type": "Heavy Belt", "stats": [{"type": "and", "filters": []}]}, "sort": {"price": "asc"}})
@@ -188,14 +187,16 @@ def priceAndNameFromResults(results):
         
         name.append(result['item']['name'])
         baseType.append(result['item']['baseType'])
-        try:
-            lastCharName = result['listing']['account']['lastCharacterName']
-        except:
-            lastCharName = "null"
-        try:
-            print("got stack size:", result['item']['stackSize'], "Acc name:", result['listing']['account']['name'], '//', lastCharName)
-        except:
-            print("no stack size")
+        
+        # STACK SIZE SHENANIGANS
+        # try:
+        #     lastCharName = result['listing']['account']['lastCharacterName']
+        # except:
+        #     lastCharName = "null"
+        # try:
+        #     print("got stack size:", result['item']['stackSize'], "Acc name:", result['listing']['account']['name'], '//', lastCharName)
+        # except:
+        #     print("no stack size")
     for x in range(len(results)):
         rowList.append([name[x], baseType[x], priceAmount[x], currencyName[x]])
         
